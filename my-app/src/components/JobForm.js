@@ -1,28 +1,60 @@
-import React from 'react';
+import React from "react";
 
-const JobForm = (props) => {
-  return (
-    <main>
-      <section>
-        <h2>Job Listings</h2>
-        <ul id="job-listings">
-
-        </ul>
-      </section>
+class JobForm extends React.Component {
+  state = {
+    title: "",
+    pay: "",
+    description: "",
+    interested: ""
+  };
+  handleUserInput = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+  resetForm = () => {
+    this.setState({
+      title: "",
+      pay: "",
+      description: "",
+      interested: ""
+    });
+  };
+  handleFormSubmit = event => {
+    event.preventDefault();
+    this.props.submitJobListing(this.state);
+    this.resetForm();
+  };
+  render() {
+    return (
       <aside id="side-bar">
         <h3>Add a Job</h3>
-        <form class="job-form">
-          <label for="title">Title</label>
-          <input type="text" name="title">
-          <label for="pay">Compensation</label>
-          <input type="text" name="pay">
-          <label for="description">Description</label>
-          <textarea name="description" rows="8" cols="40"></textarea>
+        <form className="job-form" onSubmit={this.handleFormSubmit}>
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            name="title"
+            value={this.state.title}
+            onChange={this.handleUserInput}
+          />
+          <label htmlFor="pay">Compensation</label>
+          <input
+            type="text"
+            name="pay"
+            value={this.state.pay}
+            onChange={this.handleUserInput}
+          />
+          <label htmlFor="description">Description</label>
+          <textarea
+            name="description"
+            value={this.state.description}
+            onChange={this.handleUserInput}
+            rows="8"
+            cols="40"
+          />
           <input type="submit" name="submit" value="Submit" />
         </form>
       </aside>
-    </main>
-  )
+    );
+  }
 }
 
 export default JobForm;
