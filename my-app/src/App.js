@@ -13,12 +13,15 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch("./listings.json")
+    fetch("./static/listings.json")
       .then(response => response.json())
-      .then(jobs => {
+       console.log("response", response.json)
+         .then(jobs => {
+        console.log("jobs", jobs)
         return this.setState({
           jobs: jobs
         });
+
       });
   }
   submitJobListing = job => {
