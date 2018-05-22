@@ -13,11 +13,9 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch("./static/listings.json")
+    fetch("/Listings.json")
       .then(response => response.json())
-       console.log("response", response.json)
          .then(jobs => {
-        console.log("jobs", jobs)
         return this.setState({
           jobs: jobs
         });

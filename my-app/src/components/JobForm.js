@@ -1,3 +1,4 @@
+;
 import React from "react";
 
 class JobForm extends React.Component {
@@ -57,4 +58,4 @@ class JobForm extends React.Component {
   }
 }
 
-export default JobForm;
+export default JobForm
